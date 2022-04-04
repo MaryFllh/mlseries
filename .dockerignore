@@ -1,0 +1,12 @@
+.git
+.cache
+venv
+venv/**/*
+.env
+.github
+.env.template
+./**/Dockerfile
+./**/Dockerfile.*
+**/*.pyc
+.pytest_cache
+./**/venv

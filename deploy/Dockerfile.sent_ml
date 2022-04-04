@@ -1,0 +1,11 @@
+FROM python:3.9-slim AS py39slimbase
+RUN apt-get update -y && apt-get install -y pkg-config python3-dev gcc git libncurses5
+
+FROM py39slimbase AS runtime
+
+
+WORKDIR /ml
+COPY ./src/ml/requirements.txt /ml
+RUN pip install -r requirements.txt --no-cache-dir
+
+CMD ["uvicorn","main:app","--port","8000","--host","0.0.0.0"]

@@ -1,0 +1,11 @@
+FROM python:3.9-slim as py39slimbase
+RUN apt-get update -y && apt-get install vim htop curl -y
+
+WORKDIR /server
+COPY ./src/server/requirements.txt /server
+RUN pip install -r requirements.txt
+
+
+COPY ./src/server /server
+
+

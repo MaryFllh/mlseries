@@ -1,0 +1,57 @@
+schema: '2.0'
+stages:
+  pull_data_from_s3:
+    cmd: aws s3 cp s3://sent-analysis/reviews.tsv ./data/reviews.tsv
+    deps:
+    - path: s3://sent-analysis/reviews.tsv
+      etag: d8a6be2d1deb19f9cd76f1b69a793b5f
+      size: 8481022
+    outs:
+    - path: ./data/reviews.tsv
+      md5: d8a6be2d1deb19f9cd76f1b69a793b5f
+      size: 8481022
+  prepare_data:
+    cmd: docker-compose run sentiment.ml "python -m prepare_data ."
+    deps:
+    - path: data/reviews.tsv
+      md5: d8a6be2d1deb19f9cd76f1b69a793b5f
+      size: 8481022
+    - path: prepare_data/__main__.py
+      md5: fd698d5634e84fe9ea713e10c59154ca
+      size: 719
+    outs:
+    - path: data/test_data.parquet
+      md5: a9a52c60878a1cc92cef68ee8a4eaaae
+      size: 206588
+    - path: data/train_data.parquet
+      md5: 57fe388a9b3d96ed734ddad601941a53
+      size: 808111
+  train_model:
+    cmd: docker-compose run sentiment.ml "python -m train ."
+    deps:
+    - path: data/train_data.parquet
+      md5: 57fe388a9b3d96ed734ddad601941a53
+      size: 808111
+    - path: train/__main__.py
+      md5: 0b044356b96a8419fcd64ba7087c225d
+      size: 939
+    outs:
+    - path: model/lr.model
+      md5: afb779dc7ffb7b659c1d16937c57b910
+      size: 373778
+  test_model:
+    cmd: docker-compose run sentiment.ml "python -m test ."
+    deps:
+    - path: data/test_data.parquet
+      md5: a9a52c60878a1cc92cef68ee8a4eaaae
+      size: 206588
+    - path: model/lr.model
+      md5: afb779dc7ffb7b659c1d16937c57b910
+      size: 373778
+    - path: test/__main__.py
+      md5: 22d9d83761a0690f20a3212a69480258
+      size: 1089
+    outs:
+    - path: metrics/model_performance.json
+      md5: 2b04461c99a69bbb2e209872a8b55805
+      size: 198

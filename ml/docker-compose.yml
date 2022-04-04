@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  sentiment.ml:
+    build:
+      context: ./..
+      dockerfile: ml/Dockerfile
+    environment:
+      - DATA_PATH=${DATA_PATH}
+      - DATA_FILE=${DATA_FILE}
+      - TRAIN_DATA_FILE=${TRAIN_DATA_FILE}
+      - TEST_DATA_FILE=${TEST_DATA_FILE}
+      - MODEL_PATH=${MODEL_PATH}
+      - MODEL_FILE=${MODEL_FILE}
+      - METRIC_PATH=${METRIC_PATH}
+      - METRIC_FILE=${METRIC_FILE}
+    volumes:
+      - ./data:/app/data
+      - ./metrics:/app/metrics
+      - ./model:/app/model
+      - ./prepare_data:/app/prepare_data
+      - ./train:/app/train
+      - ./test:/app/test
+      - ./utils/logger:/app/utils/logger

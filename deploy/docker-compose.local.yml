@@ -1,0 +1,41 @@
+services:
+  sentiment-analysis-ml:
+    container_name: ml
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.ml.local
+    command: uvicorn main:app --host 0.0.0.0 --port 3000 --reload-dir utils --reload-dir services
+    environment:
+      - AWS_SECRET_ACCESS_KEY_ID=${AWS_SECRET_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MODEL_FILE=${MODEL_FILE}
+      - MODEL_PATH=${MODEL_PATH}
+      - SERVER_BASE_URI=${SERVER_BASE_URI}
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - ../src/ml/:/ml/
+  
+  sentiment-analysis-server:
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.server.local
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    environment: 
+      - SERVER_BASE_URI=${SERVER_BASE_URI}
+      - ML_BASE_URI=${ML_BASE_URI}
+      - AWS_SECRET_ACCESS_KEY_ID=${AWS_SECRET_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - ../src/server:/server
+    ports:
+      - 8000:8000
+
+
+
