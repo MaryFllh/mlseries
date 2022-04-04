@@ -1,5 +1,5 @@
 class TrainTestSplit:
-    TEST_SIZE = 0.2
+    TEST_SIZE = 0.3
 
 
 class LogisticRegressionConfig:
