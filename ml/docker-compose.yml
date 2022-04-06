@@ -20,4 +20,4 @@ services:
       - ./prepare_data:/app/prepare_data
       - ./train:/app/train
       - ./test:/app/test
-      - ./utils/logger:/app/utils/logger
+      - ./../shared/utils/logger:/app/utils/logger
