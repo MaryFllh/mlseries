@@ -10,6 +10,10 @@ from model_params import LogisticRegressionConfig
 
 
 def train():
+    """
+    Loads the training data, creates, fits a pipeline on
+    the data and saves the model
+    """
     config = Config()
     lr_params = {
         "n_jobs": LogisticRegressionConfig.n_jobs,

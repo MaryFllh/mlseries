@@ -1,9 +1,7 @@
 FROM python:3.9-slim as py39slim
-RUN apt-get update -y && apt-get install vim htop curl -y
 
 WORKDIR /ml
-COPY ./src/ml/requirements.txt /ml
-RUN pip install -r requirements.txt --no-cache-dir
+COPY ./ml/requirements.txt /ml
+RUN pip install -r requirements.txt
 
-
-COPY ./src/ml /ml
+COPY ./ml /ml
