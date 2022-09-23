@@ -9,7 +9,7 @@ app = FastAPI()
 predict_service = PredictService()
 
 
-@app.get("/prediction_job/", status_code=status.HTTP_201_CREATED)
+@app.post("/prediction_job/", status_code=status.HTTP_201_CREATED)
 def add_prediction_job(review: Review):
     """
     This endpoint receives reviews, sends it to the 

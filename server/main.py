@@ -13,7 +13,7 @@ config = Config()
 def add_review(review: str):
     """
     This endpoint receives reviews, creates an appropriate
-    payload and makes a get request to ml's endpoint for a
+    payload and makes a post request to ml's endpoint for a
     prediction on the input
     
     Args:
@@ -34,6 +34,6 @@ def add_review(review: str):
     payload = {
         "text": review,
     }
-    resp = requests.get(endpoint, json=payload)
+    resp = requests.post(endpoint, json=payload)
     return resp.json()
 
