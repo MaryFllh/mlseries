@@ -2,6 +2,7 @@ uvicorn[standard]==0.13.4
 requests==2.24.0
 fastapi==0.68.1
 black==21.4b2
-mypy==0.812
 httpx==0.18.2
 boto3==1.17.107
+pytest==7.2.1
+python-dotenv==1.0.0
