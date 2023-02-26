@@ -1,11 +1,11 @@
 name: Run Unit Tests in ML
 env:
-    DATA_PATH:data
-    DATA_FILE:reviews.tsv
-    TRAIN_DATA_FILE:train_data.parquet
-    TEST_DATA_FILE:test_data.parquet
-    MODEL_PATH:model
-    MODEL_FILE:lr.model
+    DATA_PATH: "data"
+    DATA_FILE: "reviews.tsv"
+    TRAIN_DATA_FILE: "train_data.parquet"
+    TEST_DATA_FILE: "test_data.parquet"
+    MODEL_PATH: "model"
+    MODEL_FILE: "lr.model"
 
 on:
   push:
