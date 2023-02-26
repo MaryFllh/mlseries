@@ -33,12 +33,14 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pytest 
           if [ -f ml/requirements.txt ]; then pip install -r ml/requirements.txt; fi
-      - run: |
           pip install boto3
           pip install --upgrade dvc[s3]
+      - name: Pull Data from Remote DVC Storage
+        run: |
           cd ml
           mkdir model
           dvc pull ./model/lr.model
           dvc pull ./data/train_data.parquet
           dvc pull ./data/test_data.parquet
-          pytest
+      - name: Run Unit Tests
+        run: pytest

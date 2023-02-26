@@ -1,4 +1,4 @@
-uvicorn[standard]==0.13.4
+uvicorn[standard]==0.20.0
 fastapi==0.68.1
 black==21.4b2
 numpy==1.24.2
