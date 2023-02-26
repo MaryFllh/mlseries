@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v3
       with:
-        python-version: "3.10"
+        python-version: "3.9"
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -31,7 +31,14 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - name: Run Unit Test for ML with pytest
+    - env:
+      DATA_PATH:data
+      DATA_FILE:reviews.tsv
+      TRAIN_DATA_FILE:train_data.parquet
+      TEST_DATA_FILE:test_data.parquet
+      MODEL_PATH:model
+      MODEL_FILE:lr.model
       run: |
         cd ml
         pytest
