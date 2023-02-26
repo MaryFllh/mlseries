@@ -6,6 +6,8 @@ env:
     TEST_DATA_FILE: "test_data.parquet"
     MODEL_PATH: "model"
     MODEL_FILE: "lr.model"
+    AWS_SECRET_ACCESS_KEY_ID: ${{secrets.AWS_SECRET_ACCESS_KEY_ID}}
+    AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
 
 on:
   push:
@@ -37,4 +39,6 @@ jobs:
           cd ml
           mkdir model
           dvc pull ./model/lr.model
+          dvc pull ./data/train_data.parquet
+          dvc pull ./data/test_data.parquet
           pytest
