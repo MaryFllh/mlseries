@@ -27,5 +27,5 @@ jobs:
         with:
           python-version: "3.9"
       - run: |
-        cd ml
-        pytest
+          cd ml
+          pytest
