@@ -49,4 +49,6 @@ jobs:
           dvc pull ./data/train_data.parquet
           dvc pull ./data/test_data.parquet
       - name: Run Unit Tests
-        run: pytest
+        run: |
+          cd ml
+          pytest
