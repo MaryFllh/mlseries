@@ -1,5 +1,3 @@
-import pytest
-
 from services.predict import PredictService
 
 

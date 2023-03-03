@@ -27,7 +27,7 @@ def add_review(review: str):
         HTTPException: if the input is a sequence of numbers
     """
     endpoint = f"{config.ml_base_uri}/prediction_job/"
-
+    import pdb; pdb.set_trace()
     if re.findall(r'^\-?[1-9][0-9]*$', review):
         raise HTTPException(status_code=422, detail="Review cannot be a number")
 

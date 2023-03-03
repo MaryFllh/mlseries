@@ -1,0 +1,32 @@
+name: Run Unit Tests in Server
+env:
+    ML_BASE_URI: "http://ml:3000"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - dev
+    paths:
+      - 'server/**'
+
+jobs:
+  deploy:
+    name: Run Unit Tests in Server 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest 
+          if [ -f server/requirements.txt ]; then pip install -r server/requirements.txt; fi
+     - name: Run Unit Tests
+        run: |
+          cd server 
+          pytest
