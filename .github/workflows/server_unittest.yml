@@ -14,9 +14,8 @@ on:
 
 jobs:
   deploy:
-    name: Run Unit Tests in Server 
+    name: Run Unit Tests for server 
     runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
         with:
@@ -26,7 +25,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pytest 
           if [ -f server/requirements.txt ]; then pip install -r server/requirements.txt; fi
-     - name: Run Unit Tests
+      - name: Run Unit Tests
         run: |
           cd server 
           pytest
