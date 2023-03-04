@@ -16,6 +16,7 @@ jobs:
   deploy:
     name: Run Unit Tests for server 
     runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
         with:
