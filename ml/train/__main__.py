@@ -1,12 +1,11 @@
 import pandas as pd
-
 from joblib import dump
-from sklearn.pipeline import Pipeline
+from model_params import LogisticRegressionConfig
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.linear_model import LogisticRegression
-from sklearn.feature_extraction.text import TfidfTransformer, CountVectorizer
+from sklearn.pipeline import Pipeline
 
 from .config import Config
-from model_params import LogisticRegressionConfig
 
 
 def train():

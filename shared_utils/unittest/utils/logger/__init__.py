@@ -1,4 +1,4 @@
 import logging
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(f"sentiment-analysis-logger")
+logger = logging.getLogger("sentiment-analysis-logger")

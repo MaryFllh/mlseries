@@ -1,8 +1,7 @@
 import pandas as pd
-
+from model_params import TrainTestSplit
 from sklearn.model_selection import train_test_split
 
-from model_params import TrainTestSplit
 from .config import Config
 
 

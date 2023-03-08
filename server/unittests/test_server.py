@@ -1,14 +1,11 @@
 import pytest
-
+from config import Config
+from entities.review import Review
 from fastapi import HTTPException
 from fastapi.testclient import TestClient
+from main import add_review, app
 from pydantic import ValidationError
 from requests_mock import Adapter
-
-from entities.review import Review
-from main import app, add_review
-from config import Config
-
 
 client = TestClient(app)
 config = Config()

@@ -11,18 +11,17 @@ class Config:
         exit_program(env_var): if an environment variable is
                 missing, it exists with an error message
     """
-    
+
     def __init__(self):
         if getenv("MODEL_PATH") is None:
             self.exit_program("MODEL_PATH")
         else:
             self.model_path = getenv("MODEL_PATH")
-        
+
         if getenv("MODEL_FILE") is None:
             self.exit_program("MODEL_FILE")
         else:
             self.model_file = getenv("MODEL_FILE")
-
 
     def exit_program(self, env_var):
         """

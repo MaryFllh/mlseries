@@ -1,8 +1,8 @@
-import pandas as pd
-
 from json import dump
+
+import pandas as pd
 from joblib import load
-from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 
 from .config import Config
 
