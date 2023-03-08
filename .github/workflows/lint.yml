@@ -29,6 +29,7 @@ jobs:
       run: |
         # stop the build if there are Python syntax errors or undefined names
         python -m flake8 --ignore=E501
-        python -m black
+        python -m black ml/
+        python -m black server/
         python -m isort ml/
         python -m isort server/

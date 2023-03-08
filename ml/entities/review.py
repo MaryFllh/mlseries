@@ -8,7 +8,8 @@ class Review(BaseModel):
         """
         Controls the behaviour of the Review class
         """
+
         min_anystr_length = 4
         error_msg_templates = {
-            'value_error.any_str.min_length': 'min_length:{limit_value}',
+            "value_error.any_str.min_length": "min_length:{limit_value}",
         }
