@@ -19,6 +19,7 @@ jobs:
     - uses: psf/black@stable
       with:
         options: "--check --verbose"
+        version: "21.5b1"
     - uses: actions/setup-python@v3
       with:
         python-version: "3.9"
