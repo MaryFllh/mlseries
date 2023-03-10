@@ -13,6 +13,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'ml/**'
   pull_request:
     branches:
       - dev
@@ -50,4 +52,4 @@ jobs:
           dvc pull ./data/test_data.parquet
       - name: Run Unit Tests
         run: |
-          invoke ml_tests
+          invoke mltests

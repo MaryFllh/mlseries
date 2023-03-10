@@ -9,7 +9,7 @@ def tests(cmd):
 
 
 @task
-def ml_tests(cmd):
+def mltests(cmd):
     """
     Used by ml_unittest.yml to seperate the actions and make debugging easier
     """
@@ -17,7 +17,7 @@ def ml_tests(cmd):
 
 
 @task
-def server_tests(cmd):
+def servertests(cmd):
     """
     Used by server_unittest.yml to seperate the actions and make debugging easier
     """
