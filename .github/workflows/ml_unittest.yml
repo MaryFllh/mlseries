@@ -50,4 +50,4 @@ jobs:
           dvc pull ./data/test_data.parquet
       - name: Run Unit Tests
         run: |
-          invoke tests
+          invoke ml_tests
