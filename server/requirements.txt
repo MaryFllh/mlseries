@@ -1,4 +1,4 @@
-black==21.5b1
+black==21.5b2
 boto3==1.17.107
 fastapi==0.68.1
 flake8==6.0.0
