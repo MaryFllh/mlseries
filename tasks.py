@@ -9,6 +9,22 @@ def tests(cmd):
 
 
 @task
+def ml_tests(cmd):
+    """
+    Used by ml_unittest.yml to seperate the actions and make debugging easier
+    """
+    cmd.run("pytest ml/")
+
+
+@task
+def server_tests(cmd):
+    """
+    Used by server_unittest.yml to seperate the actions and make debugging easier
+    """
+    cmd.run("pytest server/")
+
+
+@task
 def lint(cmd):
     cmd.run(f"flake8 --ignore E501 --count --statistics {file_paths}")
 

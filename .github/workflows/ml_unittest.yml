@@ -50,5 +50,4 @@ jobs:
           dvc pull ./data/test_data.parquet
       - name: Run Unit Tests
         run: |
-          cd ml
-          pytest
+          invoke tests

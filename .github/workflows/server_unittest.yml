@@ -28,5 +28,4 @@ jobs:
           if [ -f server/requirements.txt ]; then pip install -r server/requirements.txt; fi
       - name: Run Unit Tests
         run: |
-          cd server 
-          pytest
+          invoke server_unittest
