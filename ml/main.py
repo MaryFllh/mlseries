@@ -1,6 +1,7 @@
+from services.predict import PredictService
 from entities.review import Review
 from fastapi import FastAPI, status
-from services.predict import PredictService
+
 
 app = FastAPI()
 
