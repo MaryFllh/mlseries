@@ -1,4 +1,4 @@
-black==21.4b2
+black==23.1.0
 fastapi==0.68.1
 flake8==6.0.0
 invoke==2.0.0

@@ -12,7 +12,6 @@ config = Config()
 
 
 def test_add_review(requests_mock: Adapter):
-
     review1 = 123
     with pytest.raises(ValidationError) as exc_info:
         add_review(Review(text=review1))
