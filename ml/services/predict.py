@@ -19,9 +19,6 @@ class PredictService:
         Loads the env vars and the trained model
         """
         self.config = Config()
-        import os
-
-        print(os.getcwd(), '??????"""""""????????\n\n')
         self.model = load(f"{self.config.model_path}/{self.config.model_file}")
 
     def predict(self, review: Review):

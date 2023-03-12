@@ -1,5 +1,5 @@
+import joblib
 import pandas as pd
-from joblib import dump
 from model_params import LogisticRegressionConfig
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.linear_model import LogisticRegression
@@ -8,12 +8,11 @@ from sklearn.pipeline import Pipeline
 from .config import Config
 
 
-def train():
+def train(config=Config()):
     """
     Loads the training data, creates, fits a pipeline on
     the data and saves the model
     """
-    config = Config()
     lr_params = {
         "n_jobs": LogisticRegressionConfig.n_jobs,
         "C": LogisticRegressionConfig.C,
@@ -32,7 +31,7 @@ def train():
         ]
     )
     clf.fit(X, y)
-    dump(clf, f"{config.model_path}/{config.model_file}")
+    joblib.dump(clf, f"{config.model_path}/{config.model_file}")
 
 
 if __name__ == "__main__":
