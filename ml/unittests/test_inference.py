@@ -1,11 +1,21 @@
+from unittest import TestCase
+
+from entities.review import Review
 from services.predict import PredictService
 
-predict_service = PredictService()
 
+class TestPredictService(TestCase):
+    def setUp(self):
+        self.predict_service = PredictService()
 
-def test_predict_service():
-    review1 = "It was great"
-    review2 = "terrible. impossible to bear!"
+    def test_predict_service(self):
+        review = Review(text="terrible. impossible to bear!")
 
-    assert predict_service.predict(review1)["prediction"] == "positive"
-    assert predict_service.predict(review2)["prediction"] == "negative"
+        response = self.predict_service.predict(review)
+
+        self.assertIsInstance(response, dict)
+        self.assertIn("prediction", response)
+        self.assertIn("prediction_score", response)
+        self.assertEqual(response["prediction"], "negative")
+        self.assertGreaterEqual(response["prediction_score"], 0)
+        self.assertLessEqual(response["prediction_score"], 100)

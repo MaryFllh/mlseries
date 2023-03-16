@@ -34,6 +34,7 @@ class PredictService:
                             sentiment and an associated prediciton score
         """
         response = dict()
+        review = review.text.lower()
         response["prediction"] = (
             "positive" if self.model.predict([review])[0] else "negative"
         )

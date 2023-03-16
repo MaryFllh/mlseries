@@ -1,6 +1,5 @@
-from unittest.mock import MagicMock, patch
+from unittest.mock import Mock, patch
 
-import joblib
 import pandas as pd
 from sklearn.pipeline import Pipeline
 from train.__main__ import train
@@ -10,7 +9,7 @@ from train.__main__ import train
 @patch("train.__main__.joblib.dump")
 def test_train(mock_dump, mock_read_parquet):
     # Create a mock Config object and set data paths
-    config = MagicMock()
+    config = Mock()
     config.data_path = "/path/to/data"
     config.train_data_file = "train_data.parquet"
     config.model_path = "/path/to/model"
@@ -34,5 +33,5 @@ def test_train(mock_dump, mock_read_parquet):
     )
 
     # Check that joblib.dump was called with a Pipeline object
-    _, args, _ = joblib.dump.mock_calls[0]
+    _, args, _ = mock_dump.mock_calls[0]
     assert isinstance(args[0], Pipeline)
