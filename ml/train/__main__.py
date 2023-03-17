@@ -8,11 +8,13 @@ from sklearn.pipeline import Pipeline
 from .config import Config
 
 
-def train(config=Config()):
+def train():
     """
     Loads the training data, creates, fits a pipeline on
     the data and saves the model
     """
+    config = Config()
+
     lr_params = {
         "n_jobs": LogisticRegressionConfig.n_jobs,
         "C": LogisticRegressionConfig.C,

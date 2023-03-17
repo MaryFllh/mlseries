@@ -5,7 +5,8 @@ from sklearn.model_selection import train_test_split
 from .config import Config
 
 
-def split_train_test_data(config=Config):
+def split_train_test_data():
+    config = Config()
     data = pd.read_csv(f"{config.data_path}/{config.data_file}", sep="\t")
     data = data[(data["Sentiment"] == 0) | (data["Sentiment"] == 4)]
     data["labels"] = data.apply(lambda x: 0 if x["Sentiment"] == 0 else 1, axis=1)
