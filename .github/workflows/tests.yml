@@ -22,7 +22,7 @@ on:
 
 jobs:
   deploy:
-    name: Run Unit Tests for ML
+    name: Run Tests
     runs-on: ubuntu-latest
     steps:
       - name: Configure AWS credentials
