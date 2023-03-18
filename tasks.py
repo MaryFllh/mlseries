@@ -4,19 +4,6 @@ file_paths = "ml/ server/ deploy/ shared_utils/ tasks.py"
 
 
 @task
-def tests(cmd):
-    cmd.run("pytest")
-
-
-@task
-def mltests(cmd):
-    """
-    Used by ml_unittest.yml to seperate the actions and make debugging easier
-    """
-    cmd.run("pytest ml/")
-
-
-@task
 def servertests(cmd):
     """
     Used by server_unittest.yml to seperate the actions and make debugging easier

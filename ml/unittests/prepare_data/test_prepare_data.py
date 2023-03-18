@@ -14,13 +14,6 @@ class TestDataPreparation(TestCase):
         self.config.train_data_file = "train.csv"
         self.config.test_data_file = "test.csv"
 
-    #     # Inject the dependency
-    #     self.config_patcher = mock.patch("prepare_data.__main__.Config", return_value=self.config)
-    #     self.config_patcher.start()
-
-    # def tearDown(self):
-    #     self.config_patcher.stop()
-
     @patch("prepare_data.__main__.Config", autospec=True)
     @patch("prepare_data.__main__.pd.read_csv")
     @patch("prepare_data.__main__.train_test_split")
@@ -29,6 +22,7 @@ class TestDataPreparation(TestCase):
         self, mock_to_parquet, mock_train_test_split, mock_read_csv, mock_config
     ):
         mock_config.return_value = self.config
+
         # Mock what pd.read_csv will return
         mock_read_csv.return_value = pd.DataFrame(
             {

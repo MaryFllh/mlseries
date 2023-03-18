@@ -40,6 +40,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pytest 
           if [ -f ml/requirements.txt ]; then pip install -r ml/requirements.txt; fi
+          if [ -f server/requirements.txt ]; then pip install -r server/requirements.txt; fi
           pip install boto3
           pip install --upgrade dvc[s3]
       - name: Pull Data from Remote DVC Storage
@@ -49,6 +50,6 @@ jobs:
           dvc pull ./model/lr.model
           dvc pull ./data/train_data.parquet
           dvc pull ./data/test_data.parquet
-      - name: Run Unit Tests
+      - name: Run Tests
         run: |
-          invoke mltests
+          invoke tests
