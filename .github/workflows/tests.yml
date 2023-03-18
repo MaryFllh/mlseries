@@ -8,6 +8,7 @@ env:
     MODEL_FILE: "lr.model"
     AWS_SECRET_ACCESS_KEY_ID: ${{secrets.AWS_SECRET_ACCESS_KEY_ID}}
     AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+    ML_BASE_URI: "http://ml:3000"
 
 on:
   push:
