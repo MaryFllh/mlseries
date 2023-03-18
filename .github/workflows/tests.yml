@@ -1,4 +1,4 @@
-name: Run Unit Tests in ML
+name: Run Tests
 env:
     DATA_PATH: "data"
     DATA_FILE: "reviews.tsv"
