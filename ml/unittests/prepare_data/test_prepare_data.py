@@ -81,7 +81,7 @@ class TestDataPreparation(TestCase):
         # Verify that to_parquet was called twice
         assert mock_to_parquet.call_count == 2
 
-        # Check that the train/test data was written to the correct paths
+        # Check that the train/test data called to_parquet with the correct paths
         mock_to_parquet.assert_any_call(
             f"{self.config.data_path}/{self.config.train_data_file}"
         )
