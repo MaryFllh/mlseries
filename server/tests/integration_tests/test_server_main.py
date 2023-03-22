@@ -4,9 +4,9 @@ import pytest
 from config import Config
 from entities.review import Review
 from fastapi.testclient import TestClient
-from main import add_review, app
 from pydantic import ValidationError
 from requests_mock import ANY
+from server_main import add_review, app
 
 
 @pytest.fixture
@@ -22,6 +22,7 @@ def module_client():
 
 @pytest.fixture
 def client(module_client, requests_mock):
+    # ref: https://github.com/encode/starlette/issues/818
     test_app_base_url_prefix_regex = re.compile(
         rf"{re.escape(module_client.base_url)}(/.*)?"
     )
@@ -30,7 +31,7 @@ def client(module_client, requests_mock):
 
 
 def test_add_review(config, requests_mock, client):
-    review1 = 123
+    review1 = "hi"
     with pytest.raises(ValidationError) as exc_info:
         add_review(Review(text=review1))
     assert exc_info.value.errors() == [

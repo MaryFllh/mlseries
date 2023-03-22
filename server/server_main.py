@@ -30,8 +30,5 @@ def add_review(review: Review):
     if re.compile(r"^\-?[1-9][0-9]*$").search(review.text):
         raise HTTPException(status_code=422, detail="Review cannot be a number")
 
-    payload = {
-        "text": review.text,
-    }
-    resp = requests.post(endpoint, json=payload)
+    resp = requests.post(endpoint, json=review.dict())
     return resp.json()
