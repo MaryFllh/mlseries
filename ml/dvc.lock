@@ -17,37 +17,37 @@ stages:
       size: 712
     outs:
     - path: data/test_data.parquet
-      md5: 6ffa03377d9c66345c427ae8c1e4bdf1
-      size: 206414
+      md5: 107c1e47eb031d3a510ff4b67982df01
+      size: 208560
     - path: data/train_data.parquet
-      md5: 56c7ed0462d4e7bcdc7ef89ccdb01967
-      size: 810370
+      md5: c00f72ae3eb514db3763d63eb75f40ff
+      size: 806653
   train_model:
     cmd: docker-compose run sentiment.ml "python -m train ."
     deps:
     - path: data/train_data.parquet
-      md5: 56c7ed0462d4e7bcdc7ef89ccdb01967
-      size: 810370
+      md5: c00f72ae3eb514db3763d63eb75f40ff
+      size: 806653
     - path: train/__main__.py
       md5: a8f4ee0beae2f6e2c496182f477e8074
       size: 1059
     outs:
     - path: model/lr.model
-      md5: 3b75cd8afc1a030582740190472d6bf6
-      size: 373997
+      md5: 5b0b788d688ded723f44a128a629b793
+      size: 372957
   test_model:
     cmd: docker-compose run sentiment.ml "python -m test ."
     deps:
     - path: data/test_data.parquet
-      md5: 6ffa03377d9c66345c427ae8c1e4bdf1
-      size: 206414
+      md5: 107c1e47eb031d3a510ff4b67982df01
+      size: 208560
     - path: model/lr.model
-      md5: 3b75cd8afc1a030582740190472d6bf6
-      size: 373997
+      md5: 5b0b788d688ded723f44a128a629b793
+      size: 372957
     - path: test/__main__.py
       md5: 89b83066bd5cf9db1ec20cdd8d205a83
       size: 1102
     outs:
     - path: metrics/model_performance.json
-      md5: c3b782b891df3bf1fee8cf920f9578c0
-      size: 194
+      md5: 5951f4cfc72ebdec1e4b613107ddb12c
+      size: 197
