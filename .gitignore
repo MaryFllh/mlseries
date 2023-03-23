@@ -1,6 +1,8 @@
 .DS_Store
 .env
 .venv
+data/
+s3-remote/
 model/
 __pycache__/
 __pypackages__/

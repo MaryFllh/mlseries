@@ -12,7 +12,6 @@ def split_train_test_data():
     data["labels"] = data.apply(lambda x: 0 if x["Sentiment"] == 0 else 1, axis=1)
 
     data_train, data_test = train_test_split(data, test_size=TrainTestSplit.TEST_SIZE)
-
     data_train.to_parquet(f"{config.data_path}/{config.train_data_file}")
     data_test.to_parquet(f"{config.data_path}/{config.test_data_file}")
 

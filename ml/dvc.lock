@@ -1,11 +1,7 @@
 schema: '2.0'
 stages:
   pull_data_from_s3:
-    cmd: aws s3 cp s3://sent-analysis/reviews.tsv ./data/reviews.tsv
-    deps:
-    - path: s3://sent-analysis/reviews.tsv
-      etag: d8a6be2d1deb19f9cd76f1b69a793b5f
-      size: 8481022
+    cmd: aws s3 cp s3://mlseries/reviews.tsv ./data/reviews.tsv
     outs:
     - path: ./data/reviews.tsv
       md5: d8a6be2d1deb19f9cd76f1b69a793b5f
@@ -17,41 +13,41 @@ stages:
       md5: d8a6be2d1deb19f9cd76f1b69a793b5f
       size: 8481022
     - path: prepare_data/__main__.py
-      md5: 184a55bca30e10448c0be6a8ebabae6e
-      size: 715
+      md5: 3735f4408950350d4d4e01dd08e7c481
+      size: 712
     outs:
     - path: data/test_data.parquet
-      md5: 6c1db524c5f34221de2111af28f1ccc8
-      size: 209602
+      md5: 341d3dfc6ddb53bd9f50ac3966f21cf1
+      size: 207854
     - path: data/train_data.parquet
-      md5: 48a81a15b99c5d77f382b072532da85a
-      size: 809624
+      md5: 4e29c1e5344f459260afc6d4f281aa7d
+      size: 811992
   train_model:
     cmd: docker-compose run sentiment.ml "python -m train ."
     deps:
     - path: data/train_data.parquet
-      md5: 48a81a15b99c5d77f382b072532da85a
-      size: 809624
+      md5: 4e29c1e5344f459260afc6d4f281aa7d
+      size: 811992
     - path: train/__main__.py
-      md5: 5093e3be2d96b3db49bb27e8dcb41e2e
-      size: 956
+      md5: a8f4ee0beae2f6e2c496182f477e8074
+      size: 1059
     outs:
     - path: model/lr.model
-      md5: 6267d1dacd89020b37e23aa4897456c4
-      size: 372435
+      md5: d5469ae94e6909ec28a918e79f8296cf
+      size: 372765
   test_model:
     cmd: docker-compose run sentiment.ml "python -m test ."
     deps:
     - path: data/test_data.parquet
-      md5: 6c1db524c5f34221de2111af28f1ccc8
-      size: 209602
+      md5: 341d3dfc6ddb53bd9f50ac3966f21cf1
+      size: 207854
     - path: model/lr.model
-      md5: 6267d1dacd89020b37e23aa4897456c4
-      size: 372435
+      md5: d5469ae94e6909ec28a918e79f8296cf
+      size: 372765
     - path: test/__main__.py
-      md5: 43dfe8f2f68b9e443b8bd5bb18639469
+      md5: 89b83066bd5cf9db1ec20cdd8d205a83
       size: 1102
     outs:
     - path: metrics/model_performance.json
-      md5: f7cc37b5f921b5b499131024d676184f
+      md5: 70246c77f25c4fc289cb189437631f12
       size: 197

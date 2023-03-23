@@ -1,8 +1,7 @@
 if [[ "$*" =~ "pull_data_from_s3" ]]; then
     dvc run -n pull_data_from_s3 \
-    -d s3://sent-analysis/reviews.tsv \
     -o ./data/reviews.tsv \
-    aws s3 cp s3://sent-analysis/reviews.tsv ./data/reviews.tsv
+    aws s3 cp s3://mlseries/reviews.tsv ./data/reviews.tsv
 fi
 
 if [[ "$*" =~ "prepare_data" ]]; then

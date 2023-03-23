@@ -1,8 +1,6 @@
 stages:
   pull_data_from_s3:
-    cmd: aws s3 cp s3://sent-analysis/reviews.tsv ./data/reviews.tsv
-    deps:
-    - s3://sent-analysis/reviews.tsv
+    cmd: aws s3 cp s3://mlseries/reviews.tsv ./data/reviews.tsv
     outs:
     - ./data/reviews.tsv
   prepare_data:

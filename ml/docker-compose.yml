@@ -14,10 +14,10 @@ services:
       - METRIC_PATH=${METRIC_PATH}
       - METRIC_FILE=${METRIC_FILE}
     volumes:
-      - ./data:/app/data
-      - ./metrics:/app/metrics
-      - ./model:/app/model
-      - ./prepare_data:/app/prepare_data
-      - ./train:/app/train
-      - ./test:/app/test
-      - ./../shared_utils/logger:/app/utils/logger
+      - ./data:/ml/data
+      - ./metrics:/ml/metrics
+      - ./model:/ml/model
+      - ./prepare_data:/ml/prepare_data
+      - ./train:/ml/train
+      - ./test:/ml/test
+      - ./../shared_utils/logger:/ml/utils/logger
