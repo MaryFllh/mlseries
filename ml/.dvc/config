@@ -1,7 +1,4 @@
 [core]
-    no_scm = True
     remote = myremote
-['remote "s3-remote"']
-    url = s3://mlseries/
 ['remote "myremote"']
-    url = ../s3-remote
+    url = s3://mlseries/
