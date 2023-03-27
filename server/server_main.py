@@ -21,7 +21,7 @@ def add_review(review: Review):
 
     Returns:
         response(dict): response from ml's endpoint which includes
-                        prediction details
+                        prediction details, i.e. the sentiment and score
 
     Raises:
         HTTPException: if the input is a sequence of numbers
