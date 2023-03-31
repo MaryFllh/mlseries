@@ -2,8 +2,8 @@ import re
 
 import requests
 from config import Config
-from fastapi import FastAPI, HTTPException, status
 from entities.review import Review
+from fastapi import FastAPI, HTTPException, status
 
 app = FastAPI()
 config = Config()
