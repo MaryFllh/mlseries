@@ -20,5 +20,4 @@ jobs:
         python -m pip install flake8
         python -m pip install invoke
     
-    - name: Invoke Lint 
-      run: invoke lint
+    - run: invoke lint
