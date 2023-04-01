@@ -15,6 +15,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'ml/**'
+      - 'server/**'
+
   pull_request:
     branches:
       - main
