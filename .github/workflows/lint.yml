@@ -21,6 +21,4 @@ jobs:
         python -m pip install invoke
     
     - name: Invoke Lint 
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        invoke lint
+      run: invoke lint
