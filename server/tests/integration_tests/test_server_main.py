@@ -22,7 +22,7 @@ def module_client():
 
 @pytest.fixture
 def client(module_client, requests_mock):
-    # ref: https://github.com/encode/starlette/issues/818
+    # Ref: https://github.com/encode/starlette/issues/818
     test_app_base_url_prefix_regex = re.compile(
         rf"{re.escape(module_client.base_url)}(/.*)?"
     )
