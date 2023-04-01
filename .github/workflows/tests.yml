@@ -53,8 +53,6 @@ jobs:
           cd ml
           mkdir model
           dvc pull ./model/lr.model
-          dvc pull ./data/train_data.parquet
-          dvc pull ./data/test_data.parquet
       - name: Run Tests
         run: |
           invoke tests
