@@ -1,4 +1,5 @@
 name: Run Tests
+
 env:
     DATA_PATH: "data"
     DATA_FILE: "reviews.tsv"
@@ -14,12 +15,12 @@ on:
   push:
     branches:
       - main
-
   pull_request:
     branches:
-      - dev
+      - main
     paths:
       - 'ml/**'
+      - 'server/**'
 
 jobs:
   run-tests:
